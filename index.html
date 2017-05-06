@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <link href="css/iconfont.css" rel="stylesheet" />
+    
+</head>
+<body>
+<!--	<header class="mui-bar mui-bar-nav">
+	    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+	    <h1 class="mui-title">index</h1>
+	</header>-->
+	<nav class = "mui-bar mui-bar-tab" >
+			
+			<a class="mui-tab-item mui-active" id="competition" >
+				<span class="mui-icon mui-icon-spinner  "></span>
+				<span class="mui-tab-label">比赛</span>
+			</a>
+			<a class="mui-tab-item" id="friends">
+				<span class="mui-icon mui-icon-chat"></span>
+				<span class="mui-tab-label">联系人</span>
+			</a>
+			<a class="mui-tab-item" id="self">
+				<span class="mui-icon mui-icon-contact"></span>
+				<span class="mui-tab-label">个人中心</span>
+			</a>
+		</nav>
+	<script src="js/mui.min.js"></script>
+	<script src="js/app.js"></script>
+	<script type="text/javascript" charset="utf-8">
+		mui.init({			
+			preloadPages:[{
+					url:'friends.html',
+					id:'friends',
+					styles:{
+						top:'0px',
+						bottom:'45px',
+					},
+				},{
+					url:'self.html',
+					id:'self',
+					styles:{
+						top:'0px',
+						bottom:'45px',
+					},
+				},{
+					url:'login.html',
+					id:'login',
+					styles:{
+						top:'0px',
+						bottom:'45px',
+					},
+				},{
+					url:'competition.html',
+					id:'competition',
+					styles:{
+						top:'0px',
+						bottom:'45px',
+					},
+				}],
+		});
+		mui.plusReady(function(){
+			
+			var partakeflag = 0;
+			
+			var competition = document.getElementById("competition");
+			var friends = document.getElementById("friends");
+			var self = document.getElementById("self");
+			mui.openWindow({
+					url: 'competition.html',
+					id: 'competition',
+					styles:{
+						top:'0px',
+						bottom:'45px'
+					},
+					/*extras:{
+						//自定义扩展参数，可以用来处理页面间传值
+					}*/
+					createNew:false,//是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+				});
+			
+			
+			competition.addEventListener('tap',function(){
+				mui.openWindow({
+					url: 'competition.html',
+					id: 'competition',
+					styles:{
+						top:'0px',
+						bottom:'45px'
+					},
+					extras:{
+						//自定义扩展参数，可以用来处理页面间传值
+					},
+					createNew:false,//是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+				});
+				
+			});
+
+			friends.addEventListener('tap',function(){
+				var state = app.getState();
+				console.log("friends:"+state.token)
+				if(state.token)
+				{
+					mui.openWindow({
+						url:'friends.html',
+						id:"friends",
+						styles:{
+							top:'0px',
+							bottom:'45px'
+						},
+						/*extras:{
+							//自定义扩展参数，可以用来处理页面间传值
+						}*/
+						createNew:false,//是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+					});
+				}else{
+					mui.openWindow({
+						url:'login.html',
+						id:"login",
+						styles:{
+							top:'0px',
+							bottom:'45px'
+						},
+						/*extras:{
+							//自定义扩展参数，可以用来处理页面间传值
+						}*/
+						createNew:false,//是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+					});
+				}
+				
+			});
+			
+			self.addEventListener('tap',function(){
+				var state = app.getState();
+				console.log("self:"+state.token)
+				if(state.token)
+				{
+					console.log("self1")
+					mui.openWindow({
+						url:'self.html',
+						id:"self",
+						styles:{
+							top:'0px',
+							bottom:'45px'
+						},
+						extras:{
+							partakefg:partakeflag
+							//自定义扩展参数，可以用来处理页面间传值
+						},
+						createNew:false,//是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+					});
+					console.log("self2")
+				}else{
+					mui.openWindow({
+						url:'login.html',
+						id:"login",
+						styles:{
+							top:'0px',
+							bottom:'45px'
+						},
+						/*extras:{
+							//自定义扩展参数，可以用来处理页面间传值
+						}*/
+						createNew:false,//是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+					});
+				}
+			})
+		})
+	
+	
+	
+      	/*mui.init({
+      		subpages: [{
+					url: 'friends.html',
+					id: 'game.html',
+					styles: {
+						top:'0px',
+						bottom: '50px'
+					}
+				},{
+					url: 'self.html',
+					id: 'self.html',
+					styles: {
+						top: '0px', //mui标题栏默认高度为45px；
+						bottom: '50px' //默认为0px，可不定义；
+					}
+				},{
+					url: 'login.html',
+					id: 'login',
+					styles: {
+						top: '0px', //mui标题栏默认高度为45px；
+						bottom: '50px' //默认为0px，可不定义；
+					}
+				},{
+					url: 'competition.html',
+					id: 'competition.html',
+					styles: {
+						top: '0px', //mui标题栏默认高度为45px；
+						bottom: '50px' //默认为0px，可不定义；
+					}
+				}, ]
+        });
+        //HTML5+ API
+      	mui.plusReady(function() {
+				plus.webview.hide('friends.html');
+				plus.webview.hide('self.html');
+				plus.webview.hide('login.html');
+				plus.webview.show('competition.html');
+				var competition = document.getElementById('competition');
+				var friends = document.getElementById('friends')
+				var self = document.getElementById('self');
+				var state = app.getState();
+				var settings = app.getSettings();
+				
+				friends.addEventListener('tap',function(){
+					if(state.token)
+					{
+						console.log(state.token)
+						plus.webview.hide("login.html");
+						plus.webview.show('friends.html');
+
+						console.log("frindes.html")
+					}else{
+						console.log(state.token)
+						plus.webview.show('login.html');
+						plus.webview.hide('friends.html');
+						console.log("login.html")
+					}
+					plus.webview.hide('self.html');
+					plus.webview.hide('competition.html');
+				});
+				self.addEventListener('tap', function() {
+					if(state.token)
+					{
+						plus.webview.show('self.html');
+						plus.webview.hide("login.html");
+						console.log("token: "+state.token+"hh")
+						console.log("self.html")
+					}else{
+						console.log("token: "+state.token+"hh")
+						plus.webview.show('login.html');
+						plus.webview.hide("self.html");
+						console.log("login.html")
+					}
+					plus.webview.hide('competition.html');
+					plus.webview.hide('friends.html');
+				});
+				competition.addEventListener('tap', function() {
+					plus.webview.show('competition.html');
+					plus.webview.hide('friends.html');
+					plus.webview.hide('login.html');
+					plus.webview.hide('self.html');
+				});
+			});
+			if(!mui.os.plus) {
+				window.location.href = 'competition-web.html';
+			}*/
+    </script>
+    
+</body>
+</html>

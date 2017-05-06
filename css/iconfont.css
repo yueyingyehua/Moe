@@ -1,0 +1,35 @@
+
+@font-face {font-family: "iconfont";
+  src: url('../fonts/iconfont.eot?t=1485589105042'); /* IE9*/
+  src: url('../fonts/iconfont.eot?t=1485589105042#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('../fonts/iconfont.woff?t=1485589105042') format('woff'), /* chrome, firefox */
+  url('../fonts/iconfont.ttf?t=1485589105042') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('../fonts/iconfont.svg?t=1485589105042#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family:"iconfont" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-luxian:before { content: "\f0027"; }
+
+.icon-dingdan:before { content: "\e6bc"; }
+
+.icon-fabu:before { content: "\e616"; }
+
+.icon-wode:before { content: "\e6b1"; }
+
+.icon-pinzhuo:before { content: "\e712"; }
+
+.icon-zhengzaijinxing:before { content: "\e60d"; }
+
+.icon-truck:before { content: "\e6b2"; }
+
+.icon-contacts:before { content: "\e6d5"; }
+
+.icon-chazhao:before { content: "\e606"; }
+

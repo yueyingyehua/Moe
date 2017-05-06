@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UT0F-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<h1>test 
+		</h1>
+		<button type="button" class="mui-btn mui-btn-blue mui-btn-block" id="about">按钮</button>
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init()
+	
+		var about = document.getElementById("about");
+		about.addEventListener('tap',function(){
+			console.log("test1")
+			mui.openWindow({
+				url:'index.html',
+				id:'index'
+				
+			});
+			console.log("2")
+		})
+		</script>
+	</body>
+
+</html>
